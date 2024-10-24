@@ -18,7 +18,7 @@ Une API RESTful légère construite avec un router PHP personnalisé, inspiré d
 
 1. Clonez le répertoire :
 ```bash
-git clone [https://github.com/JXPROs/Route-for-api-php.git]
+git clone https://github.com/JXPROs/Route-for-api-php.git
 cd php-simple-router
 ```
 
