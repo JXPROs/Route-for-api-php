@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template avec 4 onglets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .main{
+            width: 100%;
+            max-width: 800px;
+            margin: 24px auto;
+        }
+        .tabs {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            background-color: #ffff;
+        }
+        .tabs li {
+            padding: 10px 20px;
+            margin: 0;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius:0;
+            transition: all 0.3s ease;
+            
+        }
+        .tabs li:hover {
+           /* box-shadow: -4px -4px 8px rgba(0,0,0,0.2), 4px -4px 8px rgba(0,0,0,0.2);*/
+           box-shadow: -4px -4px 8px #aaa, 4px -4px 8px #aaa, 0 4px 8px -4px #aaa;
+        }
+        .tabs li.active {
+            /*box-shadow: -6px -4px 8px rgba(0,0,0,0.3), 6px -4px 8px rgba(0,0,0,0.3);*/
+            box-shadow: -6px -4px 8px #aaa, 6px -4px 8px #aaa, 0 4px 8px -4px #aaa;
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+            border-top: 1px solid #aaa;
+            border-left: 1px solid #aaa;
+            border-right: 1px solid #aaa;
+        }
+        .tabs li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .content {
+            padding: 20px;
+            box-shadow: inset 0 6px 8px -4px #aaa;
+            position: relative;
+            background-color: #fff;
+            border-top: 1px solid #aaa
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <nav>
+        <ul class="tabs">
+            <li class="active"><a href="#onglet1">Onglet 1</a></li>
+            <li><a href="#onglet2">Onglet 2</a></li>
+            <li><a href="#onglet3">Onglet 3</a></li>
+            <li><a href="#onglet4">Onglet 4</a></li>
+            <li><a href="#onglet4">Onglet 5</a></li>
+        </ul>
+    </nav>
+
+    <div id="onglet1" class="content">
+        <h2>Contenu de l'onglet 1</h2>
+        <p>Ceci est le contenu de l'onglet 1.</p>
+    </div>
+
+    <div id="onglet2" class="content" style="display: none;">
+        <h2>Contenu de l'onglet 2</h2>
+        <p>Ceci est le contenu de l'onglet 2.</p>
+    </div>
+
+    <div id="onglet3" class="content" style="display: none;">
+        <h2>Contenu de l'onglet 3</h2>
+        <p>Ceci est le contenu de l'onglet 3.</p>
+    </div>
+
+    <div id="onglet4" class="content" style="display: none;">
+        <h2>Contenu de l'onglet 4</h2>
+        <p>Ceci est le contenu de l'onglet 4.</p>
+    </div>
+
+
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tabs li');
+            const contents = document.querySelectorAll('.content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.querySelector('a').getAttribute('href').substring(1);
+
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    contents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    document.getElementById(targetId).style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
